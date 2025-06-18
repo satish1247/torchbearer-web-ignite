@@ -1,8 +1,9 @@
-
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import ContactForm from '@/components/ContactForm';
+import ProjectInquiryForm from '@/components/ProjectInquiryForm';
 
 const TBSolutions = () => {
   const services = [
@@ -153,6 +154,17 @@ const TBSolutions = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Contact Forms Section */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-[#2c3e50] mb-12 text-center">
+            Connect With Us
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <ContactForm />
+            <ProjectInquiryForm />
           </div>
         </section>
 

@@ -14,7 +14,7 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
@@ -34,6 +34,6 @@ const App = () => {
       </QueryClientProvider>
     </BrowserRouter>
   );
-};
+}
 
 export default App;

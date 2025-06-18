@@ -79,9 +79,13 @@ const Companies = () => {
               {/* Header */}
               <div className="text-center mb-12">
                 <div className="mb-6">
-                  {/* Placeholder for TB Academy Logo */}
-                  <div className="w-24 h-24 bg-[#f1c40f] rounded-full mx-auto flex items-center justify-center mb-4">
-                    <span className="text-white font-bold text-2xl">TB</span>
+                  {/* TB Academy Logo */}
+                  <div className="w-32 h-32 mx-auto mb-4">
+                    <img 
+                      src="/lovable-uploads/516598c1-bf9e-469a-a066-71e757c9b359.png" 
+                      alt="TB Academy Logo" 
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-4">
@@ -148,8 +152,12 @@ const Companies = () => {
 
                   {/* QR Code Section */}
                   <div className="text-center bg-white p-6 rounded-lg shadow-md">
-                    <div className="w-32 h-32 bg-gray-200 mx-auto rounded-lg flex items-center justify-center mb-4">
-                      <span className="text-gray-500 text-sm">QR Code</span>
+                    <div className="w-48 h-48 mx-auto rounded-lg mb-4">
+                      <img 
+                        src="/lovable-uploads/5255d211-03c3-44e4-9301-5f08b037629d.png" 
+                        alt="QR Code for TB Academy YouTube Channel" 
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     <p className="text-sm text-gray-600 font-medium">
                       📲 Scan to Visit Our YouTube Channel

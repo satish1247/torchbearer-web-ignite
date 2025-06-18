@@ -39,6 +39,36 @@ export type Database = {
         }
         Relationships: []
       }
+      tb_digital_inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string
+          service_required: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone: string
+          service_required: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string
+          service_required?: string
+        }
+        Relationships: []
+      }
       tb_project_inquiries: {
         Row: {
           created_at: string

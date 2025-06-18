@@ -29,8 +29,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Toaster />
         </Layout>
-        <Toaster />
       </QueryClientProvider>
     </BrowserRouter>
   );

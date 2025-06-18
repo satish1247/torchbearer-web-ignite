@@ -1,57 +1,74 @@
 
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle, Users, Zap, Clock, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import TBDigitalContactForm from '@/components/TBDigitalContactForm';
 
 const TBDigital = () => {
   const services = [
     {
-      title: "Digital Marketing",
-      description: "Comprehensive online marketing strategies to boost your brand visibility",
-      icon: "📱",
-      details: ["Social media management", "SEO optimization", "PPC campaigns", "Analytics & reporting"]
+      title: "Social Media Management",
+      description: "Complete social media strategy and content management",
+      icon: "📱"
     },
     {
-      title: "Content Creation",
-      description: "Engaging content that tells your brand story and connects with your audience",
-      icon: "✍️",
-      details: ["Blog writing", "Video production", "Graphic design", "Content strategy"]
+      title: "Logo & Design Services",
+      description: "Professional logos, posters, and banner designing",
+      icon: "🎨"
     },
     {
-      title: "Web Development",
-      description: "Modern, responsive websites that deliver exceptional user experiences",
-      icon: "💻",
-      details: ["Responsive design", "E-commerce solutions", "CMS development", "Performance optimization"]
+      title: "Website Design",
+      description: "Custom websites and high-converting landing pages",
+      icon: "💻"
     },
     {
-      title: "Brand Identity",
-      description: "Creating memorable brand identities that make lasting impressions",
-      icon: "🎨",
-      details: ["Logo design", "Brand guidelines", "Visual identity", "Brand positioning"]
+      title: "SEO Optimization",
+      description: "Search engine optimization to boost your visibility",
+      icon: "🔍"
+    },
+    {
+      title: "Video Content",
+      description: "YouTube thumbnails and shorts editing services",
+      icon: "🎬"
+    },
+    {
+      title: "Content Writing",
+      description: "Engaging content that converts and ranks well",
+      icon: "✍️"
+    },
+    {
+      title: "Google My Business",
+      description: "Complete Google My Business setup and optimization",
+      icon: "🏢"
+    },
+    {
+      title: "Email Campaigns",
+      description: "Targeted email marketing campaigns that deliver results",
+      icon: "📧"
     }
   ];
 
   const whyChooseUs = [
     {
-      title: "Creative Excellence",
-      description: "Innovative designs and strategies that set your brand apart from the competition",
-      icon: "🌟"
+      title: "Affordable for Everyone",
+      description: "Zero-investment digital services that don't break the bank",
+      icon: CheckCircle
     },
     {
-      title: "Cost-Effective",
-      description: "Premium quality services at competitive prices that deliver maximum ROI",
-      icon: "💰"
+      title: "Branding Expertise",
+      description: "Professional branding that makes you stand out",
+      icon: Award
     },
     {
-      title: "Youth-Led Team",
-      description: "Fresh perspectives and cutting-edge approaches from our dynamic young team",
-      icon: "🚀"
+      title: "Fast Delivery",
+      description: "Quick turnaround times without compromising quality",
+      icon: Clock
     },
     {
-      title: "Results-Driven",  
-      description: "Data-backed strategies focused on achieving measurable business outcomes",
-      icon: "📊"
+      title: "Torch Bearer Ecosystem",
+      description: "Part of a comprehensive business growth platform",
+      icon: Users
     }
   ];
 
@@ -60,70 +77,53 @@ const TBDigital = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-4">
             TB Digital
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Transform your digital presence with our comprehensive marketing, branding, 
-            and web development services designed to elevate your business
+          <p className="text-2xl text-[#27ae60] font-semibold mb-6">
+            Powering Your Brand, Digitally.
+          </p>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            We help businesses, students, and creators grow online through smart and affordable digital marketing solutions.
           </p>
         </div>
 
         {/* Introduction */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-8">
-            <h2 className="text-3xl font-bold text-[#2c3e50] mb-6 text-center">
-              Digital Transformation Made Simple
-            </h2>
-            <div className="max-w-4xl mx-auto text-gray-700 leading-relaxed space-y-4">
+          <div className="bg-gradient-to-r from-green-50 to-yellow-50 rounded-lg p-8">
+            <div className="max-w-4xl mx-auto text-gray-700 leading-relaxed">
               <p className="text-lg">
-                TB Digital specializes in helping businesses navigate the digital landscape with 
-                confidence. We combine creative excellence with strategic thinking to deliver 
-                digital solutions that not only look great but also drive real business results.
-              </p>
-              <p>
-                From startups looking to establish their online presence to established companies 
-                ready to take their digital marketing to the next level, we provide tailored 
-                solutions that fit your unique needs and budget.
+                TB Digital is the digital marketing wing of Torch Bearer. We specialize in building your online presence, 
+                driving engagement, and helping you stand out in the digital world. Whether you're a startup, student entrepreneur, 
+                or small business owner — our zero-investment digital services are designed to deliver high-quality results 
+                without breaking the bank.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Services */}
+        {/* Services Offered */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-[#2c3e50] mb-12 text-center">
-            Our Digital Services
+            Services Offered
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <Card 
                 key={index} 
                 className="hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in border-t-4 border-[#f1c40f]"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <div className="text-4xl">{service.icon}</div>
-                    <div>
-                      <CardTitle className="text-xl text-[#2c3e50]">
-                        {service.title}
-                      </CardTitle>
-                    </div>
-                  </div>
+                <CardHeader className="text-center">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <CardTitle className="text-lg text-[#2c3e50]">
+                    {service.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 mb-4 text-lg">
+                  <CardDescription className="text-center text-gray-600">
                     {service.description}
                   </CardDescription>
-                  <div className="grid grid-cols-2 gap-2">
-                    {service.details.map((detail, detailIndex) => (
-                      <div key={detailIndex} className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-[#f1c40f] rounded-full"></div>
-                        <span className="text-sm text-gray-600">{detail}</span>
-                      </div>
-                    ))}
-                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -133,7 +133,7 @@ const TBDigital = () => {
         {/* Why Choose Us */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-[#2c3e50] mb-12 text-center">
-            Why Choose TB Digital?
+            Why Choose Us?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChooseUs.map((reason, index) => (
@@ -143,7 +143,7 @@ const TBDigital = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardHeader>
-                  <div className="text-4xl mb-4">{reason.icon}</div>
+                  <reason.icon className="w-12 h-12 text-[#27ae60] mx-auto mb-4" />
                   <CardTitle className="text-xl text-[#2c3e50]">
                     {reason.title}
                   </CardTitle>
@@ -158,84 +158,57 @@ const TBDigital = () => {
           </div>
         </section>
 
-        {/* Process */}
+        {/* Contact Form Section */}
         <section className="mb-16">
-          <div className="bg-[#2c3e50] text-white rounded-lg p-8">
-            <h2 className="text-3xl font-bold mb-8 text-center">
-              Our Digital Process
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-              {[
-                { step: "1", title: "Discovery", desc: "Understanding your goals" },
-                { step: "2", title: "Strategy", desc: "Planning the approach" },
-                { step: "3", title: "Design", desc: "Creating visual concepts" },
-                { step: "4", title: "Develop", desc: "Building the solution" },
-                { step: "5", title: "Launch", desc: "Going live and optimizing" }
-              ].map((process, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-[#f1c40f] text-[#2c3e50] rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                    {process.step}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <h2 className="text-3xl font-bold text-[#2c3e50] mb-6">
+                Ready to Grow Your Digital Presence?
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Let's discuss how we can help you achieve your digital marketing goals. 
+                Fill out the form and we'll get back to you within 24 hours.
+              </p>
+              <div className="bg-[#2c3e50] text-white p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Get Started Today!</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <Zap className="w-5 h-5 text-[#f1c40f]" />
+                    <span>Free consultation call</span>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{process.title}</h3>
-                  <p className="text-gray-300 text-sm">{process.desc}</p>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-[#27ae60]" />
+                    <span>Custom strategy development</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-5 h-5 text-[#f1c40f]" />
+                    <span>Quick turnaround time</span>
+                  </div>
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-        </section>
-
-        {/* Portfolio Showcase */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-[#2c3e50] mb-12 text-center">
-            Our Work Speaks for Itself
-          </h2>
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { title: "Brand Identities", count: "50+", desc: "Unique brands created" },
-                { title: "Websites Launched", count: "100+", desc: "Successful projects" },
-                { title: "Marketing Campaigns", count: "200+", desc: "Campaigns executed" }
-              ].map((stat, index) => (
-                <div key={index} className="text-center bg-white rounded-lg p-6 shadow-sm">
-                  <div className="text-3xl font-bold text-[#27ae60] mb-2">{stat.count}</div>
-                  <div className="text-lg font-semibold text-[#2c3e50] mb-1">{stat.title}</div>
-                  <div className="text-sm text-gray-600">{stat.desc}</div>
-                </div>
-              ))}
-            </div>
+            <TBDigitalContactForm />
           </div>
         </section>
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-[#f1c40f] to-[#27ae60] text-white p-12 rounded-lg">
+          <div className="bg-gradient-to-r from-[#27ae60] to-[#f1c40f] text-white p-12 rounded-lg">
             <h2 className="text-3xl font-bold mb-6">
-              Ready to Transform Your Digital Presence?
+              Transform Your Digital Presence Today
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Let's create something amazing together that drives real results for your business
+              Join hundreds of satisfied clients who have grown their business with TB Digital
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                asChild 
-                size="lg"
-                className="bg-white text-[#2c3e50] hover:bg-gray-100"
-              >
-                <Link to="/contact">
-                  Request Consultation <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button 
-                asChild 
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-[#2c3e50]"
-              >
-                <Link to="/contact">
-                  View Portfolio
-                </Link>
-              </Button>
-            </div>
+            <Button 
+              asChild 
+              size="lg"
+              className="bg-white text-[#2c3e50] hover:bg-gray-100"
+            >
+              <Link to="#contact">
+                Get Started Now <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </section>
       </div>

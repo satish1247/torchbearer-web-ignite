@@ -1,19 +1,23 @@
 
 import { useState } from 'react';
-import { Youtube, Linkedin, Instagram } from 'lucide-react';
+import { Youtube, Linkedin, Instagram, Mail, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    fullName: '',
     email: '',
+    phone: '',
+    subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,65 +28,82 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.fullName || !formData.email || !formData.subject || !formData.message) {
       toast({
         title: "Error",
-        description: "Please fill in all fields",
+        description: "Please fill in all required fields",
         variant: "destructive"
       });
       return;
     }
 
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon!",
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
-  };
+    try {
+      // Store in Supabase
+      const { error: dbError } = await supabase
+        .from('tb_general_contacts')
+        .insert({
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone || null,
+          subject: formData.subject,
+          message: formData.message
+        });
 
-  const contactInfo = [
-    {
-      title: "Email",
-      value: "torchbearer.startup@gmail.com",
-      icon: "📧",
-      action: "mailto:torchbearer.startup@gmail.com"
-    },
-    {
-      title: "WhatsApp",
-      value: "+91 6303987443",
-      icon: "📱",
-      action: "https://wa.me/916303987443"
+      if (dbError) throw dbError;
+
+      // Send email notification
+      await supabase.functions.invoke('send-general-contact-notification', {
+        body: formData
+      });
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon!",
+      });
+
+      // Reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast({
+        title: "Error",
+        description: "There was an error sending your message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-  ];
+  };
 
   const socialLinks = [
     { 
-      name: "YouTube", 
-      icon: Youtube, 
-      url: "#", 
-      color: "hover:text-red-600" 
-    },
-    { 
       name: "LinkedIn", 
       icon: Linkedin, 
-      url: "#", 
+      url: "http://linkedin.com/in/satyanarayanaganisetti", 
       color: "hover:text-blue-600" 
+    },
+    { 
+      name: "YouTube", 
+      icon: Youtube, 
+      url: "https://youtube.com/@torchbearer-tb02?si=jIIyz-TkssBknkt7", 
+      color: "hover:text-red-600" 
     },
     { 
       name: "Instagram", 
       icon: Instagram, 
-      url: "#", 
+      url: "https://www.instagram.com/torchbearer.inc?igsh=dWhpZHVza3MyYWkw&utm_source=qr", 
       color: "hover:text-pink-600" 
     }
   ];
@@ -93,11 +114,10 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-6">
-            Contact Us
+            Get In Touch with Us
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to light the future together? Get in touch with us and let's discuss 
-            how we can help transform your ideas into reality
+            We'd love to hear from you! Whether you're a student, client, or collaborator — reach out anytime.
           </p>
         </div>
 
@@ -106,7 +126,8 @@ const Contact = () => {
           <div>
             <Card className="shadow-lg border-t-4 border-[#27ae60]">
               <CardHeader>
-                <CardTitle className="text-2xl text-[#2c3e50]">
+                <CardTitle className="text-2xl text-[#2c3e50] flex items-center">
+                  <Send className="mr-2 h-6 w-6 text-[#27ae60]" />
                   Send us a Message
                 </CardTitle>
                 <CardDescription>
@@ -116,20 +137,21 @@ const Contact = () => {
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
+                    <Label htmlFor="fullName">Full Name *</Label>
                     <Input
-                      id="name"
-                      name="name"
+                      id="fullName"
+                      name="fullName"
                       type="text"
                       placeholder="Enter your full name"
-                      value={formData.name}
+                      value={formData.fullName}
                       onChange={handleInputChange}
                       className="border-gray-300 focus:border-[#27ae60]"
+                      required
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
+                    <Label htmlFor="email">Email Address *</Label>
                     <Input
                       id="email"
                       name="email"
@@ -138,28 +160,58 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       className="border-gray-300 focus:border-[#27ae60]"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="Enter your phone number (optional)"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="border-gray-300 focus:border-[#27ae60]"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Subject *</Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      placeholder="What is this about?"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      className="border-gray-300 focus:border-[#27ae60]"
+                      required
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message">Message *</Label>
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="Tell us about your project or inquiry..."
+                      placeholder="Tell us more about your inquiry..."
                       rows={5}
                       value={formData.message}
                       onChange={handleInputChange}
                       className="border-gray-300 focus:border-[#27ae60]"
+                      required
                     />
                   </div>
                   
                   <Button 
                     type="submit" 
+                    disabled={isSubmitting}
                     className="w-full bg-[#27ae60] hover:bg-green-600 text-white"
                     size="lg"
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>
@@ -171,28 +223,24 @@ const Contact = () => {
             {/* Contact Details */}
             <div>
               <h2 className="text-2xl font-bold text-[#2c3e50] mb-6">
-                Get in Touch
+                Contact Information
               </h2>
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <Card key={index} className="hover:shadow-md transition-shadow duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-center space-x-4">
-                        <div className="text-2xl">{info.icon}</div>
-                        <div>
-                          <h3 className="font-semibold text-[#2c3e50]">{info.title}</h3>
-                          <a 
-                            href={info.action}
-                            className="text-[#27ae60] hover:text-green-600 transition-colors"
-                          >
-                            {info.value}
-                          </a>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              <Card className="hover:shadow-md transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="text-2xl">📧</div>
+                    <div>
+                      <h3 className="font-semibold text-[#2c3e50]">Email</h3>
+                      <a 
+                        href="mailto:torchbearer.startup@gmail.com"
+                        className="text-[#27ae60] hover:text-green-600 transition-colors"
+                      >
+                        torchbearer.startup@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Social Media */}
@@ -216,7 +264,7 @@ const Contact = () => {
             </div>
 
             {/* Additional Info */}
-            <Card className="bg-gradient-to-r from-[#27ae60] to-[#3498db] text-white">
+            <Card className="bg-gradient-to-r from-[#27ae60] to-[#f1c40f] text-white">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-4">
                   Ready to Start Your Project?
@@ -260,8 +308,8 @@ const Contact = () => {
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-[#2c3e50]"
               >
-                <a href="https://wa.me/916303987443" target="_blank" rel="noopener noreferrer">
-                  WhatsApp Us
+                <a href="http://linkedin.com/in/satyanarayanaganisetti" target="_blank" rel="noopener noreferrer">
+                  Connect on LinkedIn
                 </a>
               </Button>
             </div>

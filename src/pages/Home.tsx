@@ -34,7 +34,7 @@ const Home = () => {
           <div className="text-center">
             <div className="mb-8 animate-fade-in">
               <img 
-                src="/lovable-uploads/ca66fb2d-65da-4d4a-830a-0d286623e3b1.png" 
+                src="/lovable-uploads/020b5ff9-8f5e-4ede-b301-82eac17e955c.png" 
                 alt="Torch Bearer Logo" 
                 className="h-32 w-auto mx-auto mb-6"
               />

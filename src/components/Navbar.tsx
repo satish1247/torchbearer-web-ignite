@@ -25,13 +25,12 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/ca66fb2d-65da-4d4a-830a-0d286623e3b1.png" 
+              src="/lovable-uploads/020b5ff9-8f5e-4ede-b301-82eac17e955c.png" 
               alt="Torch Bearer Logo" 
               className="h-12 w-auto"
             />
             <div className="flex flex-col">
               <span className="text-xl font-bold text-[#2c3e50]">TORCH BEARER</span>
-              <span className="text-xs text-[#27ae60] font-medium">Lightning the future, Transforming the world</span>
             </div>
           </Link>
 

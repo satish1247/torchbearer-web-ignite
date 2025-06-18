@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { ArrowRight, Youtube, Play } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -50,14 +50,6 @@ const Companies = () => {
     }
   ];
 
-  const learningTopics = [
-    "Innovative Tech & Engineering Projects",
-    "School & College Curriculum Support",
-    "Startup & Entrepreneurship Tips",
-    "Robotics, AI, and Automation Tutorials",
-    "Personal Growth & Career Guidance"
-  ];
-
   return (
     <div className="min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,131 +62,6 @@ const Companies = () => {
             Three specialized divisions united by a common mission to light the future 
             through innovation, education, and digital transformation
           </p>
-        </div>
-
-        {/* TB Academy Featured Section */}
-        <div className="mb-20">
-          <Card className="overflow-hidden border-l-4 border-[#f1c40f] shadow-2xl bg-gradient-to-br from-yellow-50 via-white to-orange-50">
-            <div className="p-8 md:p-12">
-              {/* Header */}
-              <div className="text-center mb-12">
-                <div className="mb-6">
-                  {/* TB Academy Logo */}
-                  <div className="w-32 h-32 mx-auto mb-4">
-                    <img 
-                      src="/lovable-uploads/516598c1-bf9e-469a-a066-71e757c9b359.png" 
-                      alt="TB Academy Logo" 
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-4">
-                  TB Academy – Learn. Innovate. Lead.
-                </h2>
-                <h3 className="text-2xl md:text-3xl font-semibold text-[#f1c40f] mb-6">
-                  A Future-Driven Learning Platform from Torch Bearer
-                </h3>
-                <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                  "TB Academy is the educational wing of Torch Bearer — a YouTube-based platform built to ignite curiosity, empower knowledge, and inspire innovation among students. From school-level concepts to college projects, from technical tutorials to entrepreneurial insights, TB Academy is your gateway to futuristic learning."
-                </p>
-              </div>
-
-              {/* Main Content Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                {/* Left Column - Learning Topics */}
-                <div className="space-y-8">
-                  <div>
-                    <h4 className="text-2xl font-bold text-[#2c3e50] mb-6 flex items-center">
-                      <span className="mr-2">💡</span> What You'll Learn:
-                    </h4>
-                    <div className="space-y-4">
-                      {learningTopics.map((topic, index) => (
-                        <div 
-                          key={index}
-                          className="flex items-start space-x-4 bg-white/70 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                        >
-                          <div className="w-3 h-3 bg-[#f1c40f] rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-gray-700 font-medium">{topic}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Quote */}
-                  <div className="bg-white/80 p-6 rounded-lg border-l-4 border-[#27ae60] shadow-sm">
-                    <p className="text-lg italic text-gray-700 mb-2">
-                      "Education is not preparation for life; education is life itself."
-                    </p>
-                    <p className="text-sm text-gray-600 font-semibold">– John Dewey</p>
-                  </div>
-                </div>
-
-                {/* Right Column - Actions & Media */}
-                <div className="space-y-8">
-                  {/* YouTube Button */}
-                  <div className="text-center">
-                    <Button 
-                      asChild 
-                      size="lg"
-                      className="bg-[#f1c40f] hover:bg-yellow-500 text-white text-lg px-8 py-4 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      <a 
-                        href="https://youtube.com/@torchbearer-tb02?si=An8dONrqITTkTT-K" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-3"
-                      >
-                        <Youtube className="h-6 w-6" />
-                        <span>🎥 Visit Our Channel</span>
-                      </a>
-                    </Button>
-                  </div>
-
-                  {/* QR Code Section */}
-                  <div className="text-center bg-white p-6 rounded-lg shadow-md">
-                    <div className="w-48 h-48 mx-auto rounded-lg mb-4">
-                      <img 
-                        src="/lovable-uploads/5255d211-03c3-44e4-9301-5f08b037629d.png" 
-                        alt="QR Code for TB Academy YouTube Channel" 
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <p className="text-sm text-gray-600 font-medium">
-                      📲 Scan to Visit Our YouTube Channel
-                    </p>
-                  </div>
-
-                  {/* Featured Video Section */}
-                  <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h5 className="text-lg font-semibold text-[#2c3e50] mb-4 flex items-center">
-                      <Play className="mr-2 h-5 w-5" />
-                      🎬 Featured Learning Video
-                    </h5>
-                    <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                      <div className="text-center">
-                        <Play className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                        <p className="text-gray-500">Video will be embedded here</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Learn More Button */}
-                  <div className="text-center">
-                    <Button 
-                      asChild 
-                      variant="outline"
-                      size="lg"
-                      className="border-[#27ae60] text-[#27ae60] hover:bg-[#27ae60] hover:text-white"
-                    >
-                      <Link to="/tb-academy">
-                        Learn More About TB Academy <ArrowRight className="ml-2 h-5 w-5" />
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
         </div>
 
         {/* Companies Grid */}

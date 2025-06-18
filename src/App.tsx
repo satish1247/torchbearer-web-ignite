@@ -14,24 +14,26 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+const App = () => {
+  return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/companies" element={<Companies />} />
-          <Route path="/tb-solutions" element={<TBSolutions />} />
-          <Route path="/tb-academy" element={<TBAcademy />} />
-          <Route path="/tb-digital" element={<TBDigital />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-      <Toaster />
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/companies" element={<Companies />} />
+            <Route path="/tb-solutions" element={<TBSolutions />} />
+            <Route path="/tb-academy" element={<TBAcademy />} />
+            <Route path="/tb-digital" element={<TBDigital />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Layout>
+        <Toaster />
+      </QueryClientProvider>
     </BrowserRouter>
-  </QueryClientProvider>
-);
+  );
+};
 
 export default App;

@@ -42,6 +42,13 @@ const TBSolutions = () => {
     }
   ];
 
+  const scrollToProjectForm = () => {
+    const element = document.getElementById('project-inquiry-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,13 +121,11 @@ const TBSolutions = () => {
           {/* CTA Button */}
           <div className="text-center">
             <Button 
-              asChild 
+              onClick={scrollToProjectForm}
               size="lg"
               className="bg-[#27ae60] hover:bg-green-600 text-white font-semibold px-8 py-4 text-lg"
             >
-              <Link to="#contact-forms">
-                Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </section>
@@ -193,7 +198,9 @@ const TBSolutions = () => {
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <ContactForm />
-            <ProjectInquiryForm />
+            <div id="project-inquiry-form">
+              <ProjectInquiryForm />
+            </div>
           </div>
         </section>
 
@@ -208,13 +215,11 @@ const TBSolutions = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                asChild 
+                onClick={scrollToProjectForm}
                 size="lg"
                 className="bg-[#27ae60] hover:bg-green-600"
               >
-                <Link to="#contact-forms">
-                  Order Your Project <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+                Order Your Project <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 asChild 

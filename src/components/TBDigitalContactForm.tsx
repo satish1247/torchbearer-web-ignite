@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
-import { Send } from 'lucide-react';
+import { Send, Loader2 } from 'lucide-react';
 
 const digitalInquirySchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -41,7 +41,10 @@ const TBDigitalContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      console.log('Submitting digital inquiry:', data);
+
+      // Store in Supabase database
+      const { error: dbError } = await supabase
         .from('tb_digital_inquiries')
         .insert({
           name: data.name,
@@ -51,19 +54,24 @@ const TBDigitalContactForm = () => {
           message: data.message,
         });
 
-      if (error) throw error;
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw dbError;
+      }
 
-      // Send email notification
-      await fetch('/api/send-digital-notification', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      // Send email notification via edge function
+      const { error: emailError } = await supabase.functions.invoke('send-digital-notification', {
+        body: data,
       });
 
+      if (emailError) {
+        console.error('Email error:', emailError);
+        // Don't throw error here - form was saved successfully
+        console.log('Email notification failed but form was saved');
+      }
+
       toast({
-        title: "Inquiry Submitted Successfully!",
+        title: "Inquiry Submitted Successfully! 🎉",
         description: "Thank you for your interest in TB Digital! We'll get back to you within 24 hours.",
       });
 
@@ -173,7 +181,14 @@ const TBDigitalContactForm = () => {
               disabled={isSubmitting}
               className="w-full bg-[#27ae60] hover:bg-green-600 text-white font-semibold"
             >
-              {isSubmitting ? 'Submitting...' : 'Send Inquiry'}
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                'Send Inquiry'
+              )}
             </Button>
           </form>
         </Form>

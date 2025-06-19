@@ -42,6 +42,13 @@ const TBDigital = () => {
     }
   ];
 
+  const scrollToContactForm = () => {
+    const element = document.getElementById('digital-contact-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,13 +112,11 @@ const TBDigital = () => {
           {/* CTA Button */}
           <div className="text-center">
             <Button 
-              asChild 
+              onClick={scrollToContactForm}
               size="lg"
               className="bg-[#f1c40f] hover:bg-yellow-500 text-[#2c3e50] font-semibold px-8 py-4 text-lg"
             >
-              <Link to="#contact">
-                Boost Your Brand <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              Boost Your Brand <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </section>
@@ -173,7 +178,9 @@ const TBDigital = () => {
                 </div>
               </div>
             </div>
-            <TBDigitalContactForm />
+            <div id="digital-contact-form">
+              <TBDigitalContactForm />
+            </div>
           </div>
         </section>
 
@@ -187,13 +194,11 @@ const TBDigital = () => {
               Join hundreds of satisfied clients who have grown their business with TB Digital
             </p>
             <Button 
-              asChild 
+              onClick={scrollToContactForm}
               size="lg"
               className="bg-white text-[#2c3e50] hover:bg-gray-100"
             >
-              <Link to="#contact">
-                Get Started Now <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              Get Started Now <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </section>

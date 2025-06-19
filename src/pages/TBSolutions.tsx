@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,31 +7,26 @@ import ContactForm from '@/components/ContactForm';
 import ProjectInquiryForm from '@/components/ProjectInquiryForm';
 
 const TBSolutions = () => {
-  const services = [
-    {
-      title: "Academic Projects",
-      description: "Comprehensive project assistance for students across all engineering disciplines",
-      icon: "🎓",
-      details: ["Final year projects", "Mini projects", "Research assistance", "Documentation support"]
-    },
-    {
-      title: "Industrial Projects", 
-      description: "Advanced automation and IoT solutions for modern industries",
-      icon: "🏭",
-      details: ["Process automation", "Quality control systems", "Monitoring solutions", "Custom software"]
-    },
-    {
-      title: "Electronics Design",
-      description: "Circuit design, PCB development, and embedded system solutions",
-      icon: "⚡",
-      details: ["PCB design", "Circuit analysis", "Component selection", "Prototyping"]
-    },
-    {
-      title: "IoT Solutions",
-      description: "Connected devices and smart systems for modern applications",
-      icon: "🌐",
-      details: ["Sensor networks", "Data analytics", "Cloud integration", "Mobile apps"]
-    }
+  const softwareSolutions = [
+    "Full Stack Web Development",
+    "Frontend Development (React, Tailwind, etc.)",
+    "Website Management and Hosting",
+    "CMS Development (WordPress, Headless CMS, etc.)",
+    "SaaS Platforms",
+    "ERP, Admin Dashboards",
+    "Portfolio, Business, and E-commerce Websites",
+    "Mobile App UI Design (basic)"
+  ];
+
+  const hardwareSolutions = [
+    "Embedded System Projects (8051, Arduino, ESP32, etc.)",
+    "IoT Based Automation Projects",
+    "Robotics (Surveillance, Automation, Control)",
+    "Sensor-Based Industrial Models",
+    "Smart Home/Office Automation Projects",
+    "Academic Project Kits",
+    "Microcontroller & PCB Projects",
+    "Custom Automation Solutions"
   ];
 
   const targetAudience = [
@@ -60,39 +56,72 @@ const TBSolutions = () => {
           </p>
         </div>
 
-        {/* Services Section */}
+        {/* What We Offer Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-[#2c3e50] mb-12 text-center">
-            Our Services
+            What We Offer
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <Card 
-                key={index} 
-                className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in border-t-4 border-[#27ae60]"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardHeader>
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <CardTitle className="text-xl text-[#2c3e50]">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 mb-4">
-                    {service.description}
-                  </CardDescription>
-                  <ul className="text-sm text-gray-500 space-y-1">
-                    {service.details.map((detail, detailIndex) => (
-                      <li key={detailIndex} className="flex items-center">
-                        <div className="w-1.5 h-1.5 bg-[#27ae60] rounded-full mr-2"></div>
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+          <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
+            We provide both <strong>Software-Based</strong> and <strong>Hardware-Based</strong> solutions for students and industries.
+          </p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Software Solutions */}
+            <Card className="border-l-4 border-[#3498db] hover:shadow-lg transition-all duration-300">
+              <CardHeader>
+                <CardTitle className="text-2xl text-[#2c3e50] flex items-center">
+                  💻 Software-Based Solutions
+                </CardTitle>
+                <CardDescription className="text-gray-600">
+                  Comprehensive web development and digital solutions
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  {softwareSolutions.map((solution, index) => (
+                    <li key={index} className="flex items-start">
+                      <div className="w-2 h-2 bg-[#3498db] rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-700">{solution}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Hardware Solutions */}
+            <Card className="border-l-4 border-[#27ae60] hover:shadow-lg transition-all duration-300">
+              <CardHeader>
+                <CardTitle className="text-2xl text-[#2c3e50] flex items-center">
+                  ⚡ Hardware-Based Solutions
+                </CardTitle>
+                <CardDescription className="text-gray-600">
+                  Advanced embedded systems and automation projects
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  {hardwareSolutions.map((solution, index) => (
+                    <li key={index} className="flex items-start">
+                      <div className="w-2 h-2 bg-[#27ae60] rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-700">{solution}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* CTA Button */}
+          <div className="text-center">
+            <Button 
+              asChild 
+              size="lg"
+              className="bg-[#27ae60] hover:bg-green-600 text-white font-semibold px-8 py-4 text-lg"
+            >
+              <Link to="#contact-forms">
+                Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </section>
 
@@ -158,7 +187,7 @@ const TBSolutions = () => {
         </section>
 
         {/* Contact Forms Section */}
-        <section className="mb-16">
+        <section className="mb-16" id="contact-forms">
           <h2 className="text-3xl font-bold text-[#2c3e50] mb-12 text-center">
             Connect With Us
           </h2>
@@ -183,7 +212,7 @@ const TBSolutions = () => {
                 size="lg"
                 className="bg-[#27ae60] hover:bg-green-600"
               >
-                <Link to="/contact">
+                <Link to="#contact-forms">
                   Order Your Project <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -193,7 +222,7 @@ const TBSolutions = () => {
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-[#2c3e50]"
               >
-                <Link to="/contact">
+                <Link to="#contact-forms">
                   Request a Demo
                 </Link>
               </Button>

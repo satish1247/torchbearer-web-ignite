@@ -6,47 +6,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import TBDigitalContactForm from '@/components/TBDigitalContactForm';
 
 const TBDigital = () => {
-  const services = [
-    {
-      title: "Social Media Management",
-      description: "Complete social media strategy and content management",
-      icon: "📱"
-    },
-    {
-      title: "Logo & Design Services",
-      description: "Professional logos, posters, and banner designing",
-      icon: "🎨"
-    },
-    {
-      title: "Website Design",
-      description: "Custom websites and high-converting landing pages",
-      icon: "💻"
-    },
-    {
-      title: "SEO Optimization",
-      description: "Search engine optimization to boost your visibility",
-      icon: "🔍"
-    },
-    {
-      title: "Video Content",
-      description: "YouTube thumbnails and shorts editing services",
-      icon: "🎬"
-    },
-    {
-      title: "Content Writing",
-      description: "Engaging content that converts and ranks well",
-      icon: "✍️"
-    },
-    {
-      title: "Google My Business",
-      description: "Complete Google My Business setup and optimization",
-      icon: "🏢"
-    },
-    {
-      title: "Email Campaigns",
-      description: "Targeted email marketing campaigns that deliver results",
-      icon: "📧"
-    }
+  const digitalServices = [
+    "Social Media Management (Instagram, LinkedIn, etc.)",
+    "Brand Identity & Logo Design",
+    "Poster, Banner & Flyer Design",
+    "SEO & Content Optimization",
+    "Google Business Setup",
+    "Video/Poster Editing for Reels & Ads",
+    "Digital Campaign Planning",
+    "YouTube Branding & Channel Optimization",
+    "Marketing Strategy Guidance",
+    "Business Profile Setup & Promotion"
   ];
 
   const whyChooseUs = [
@@ -102,31 +72,47 @@ const TBDigital = () => {
           </div>
         </section>
 
-        {/* Services Offered */}
+        {/* What We Offer */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-[#2c3e50] mb-12 text-center">
-            Services Offered
+            What We Offer
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <Card 
-                key={index} 
-                className="hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in border-t-4 border-[#f1c40f]"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardHeader className="text-center">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <CardTitle className="text-lg text-[#2c3e50]">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-gray-600">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
+          <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
+            We help individuals and businesses grow their brand online with creative and effective digital marketing.
+          </p>
+
+          <Card className="max-w-5xl mx-auto border-l-4 border-[#f1c40f] hover:shadow-lg transition-all duration-300 mb-12">
+            <CardHeader>
+              <CardTitle className="text-2xl text-[#2c3e50] flex items-center justify-center">
+                📱 Digital Marketing Services
+              </CardTitle>
+              <CardDescription className="text-center text-gray-600">
+                Comprehensive digital marketing solutions for modern businesses
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {digitalServices.map((service, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-[#f1c40f] rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-700">{service}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* CTA Button */}
+          <div className="text-center">
+            <Button 
+              asChild 
+              size="lg"
+              className="bg-[#f1c40f] hover:bg-yellow-500 text-[#2c3e50] font-semibold px-8 py-4 text-lg"
+            >
+              <Link to="#contact">
+                Boost Your Brand <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </section>
 

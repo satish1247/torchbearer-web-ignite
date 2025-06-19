@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { ArrowRight, Youtube, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -41,8 +42,8 @@ const TBAcademy = () => {
         {/* Header with Logo */}
         <div className="text-center mb-16">
           <div className="mb-8">
-            {/* TB Academy Logo - Updated */}
-            <div className="w-32 h-32 mx-auto mb-6">
+            {/* TB Academy Logo - Increased Size */}
+            <div className="w-40 h-40 mx-auto mb-6">
               <img 
                 src="/lovable-uploads/3fa5e839-c7b8-46e9-ad44-98a7e425f1cc.png" 
                 alt="TB Academy Logo" 

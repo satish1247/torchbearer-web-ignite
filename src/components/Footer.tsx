@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Youtube, Linkedin, Instagram, Mail } from 'lucide-react';
+import { Youtube, Linkedin, Instagram, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -84,6 +84,13 @@ const Footer = () => {
               >
                 <Mail className="h-5 w-5" />
                 <span>torchbearer.startup@gmail.com</span>
+              </a>
+              <a 
+                href="tel:+916303987443"
+                className="flex items-center space-x-2 text-gray-300 hover:text-[#f1c40f] transition-colors"
+              >
+                <Phone className="h-5 w-5" />
+                <span>+91 6303987443</span>
               </a>
             </div>
           </div>

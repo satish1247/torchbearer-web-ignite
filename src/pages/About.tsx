@@ -70,6 +70,13 @@ const About = () => {
                       Founder & CEO
                     </div>
                   </div>
+                  
+                  {/* Company Description */}
+                  <div className="mt-8 p-6 bg-gradient-to-r from-[#27ae60]/10 to-[#3498db]/10 rounded-lg border-l-4 border-[#27ae60]">
+                    <p className="text-lg text-gray-700 font-medium italic">
+                      "Torch Bearer is a visionary company dedicated to empowering innovation across education, automation, and digital transformation."
+                    </p>
+                  </div>
                 </div>
 
                 {/* Content Section */}

@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Youtube, Linkedin, Instagram, Mail, Send } from 'lucide-react';
+import { Youtube, Linkedin, Instagram, Mail, Send, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -225,7 +225,9 @@ const Contact = () => {
               <h2 className="text-2xl font-bold text-[#2c3e50] mb-6">
                 Contact Information
               </h2>
-              <Card className="hover:shadow-md transition-shadow duration-300">
+              
+              {/* Email */}
+              <Card className="hover:shadow-md transition-shadow duration-300 mb-4">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4">
                     <div className="text-2xl">📧</div>
@@ -236,6 +238,24 @@ const Contact = () => {
                         className="text-[#27ae60] hover:text-green-600 transition-colors"
                       >
                         torchbearer.startup@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Phone */}
+              <Card className="hover:shadow-md transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="text-2xl">📱</div>
+                    <div>
+                      <h3 className="font-semibold text-[#2c3e50]">Phone</h3>
+                      <a 
+                        href="tel:+916303987443"
+                        className="text-[#27ae60] hover:text-green-600 transition-colors"
+                      >
+                        +91 6303987443
                       </a>
                     </div>
                   </div>
@@ -300,6 +320,16 @@ const Contact = () => {
               >
                 <a href="mailto:torchbearer.startup@gmail.com">
                   Send Email
+                </a>
+              </Button>
+              <Button 
+                asChild 
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-[#2c3e50]"
+              >
+                <a href="tel:+916303987443">
+                  Call Now
                 </a>
               </Button>
               <Button 

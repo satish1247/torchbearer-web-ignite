@@ -19,7 +19,7 @@ const ChatbotButton = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: 'Hello! I\'m your Torch Bearer AI assistant. How can I help you today?',
+      content: 'Hello! I\'m TorchBot, your Torch Bearer AI assistant. How can I help you today?',
       isUser: false,
       timestamp: new Date(),
     }
@@ -86,26 +86,26 @@ const ChatbotButton = () => {
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating Button - Moved to bottom-left */}
       <Button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 left-6 h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-[#f1c40f] to-[#27ae60] hover:from-[#e1b800] hover:to-[#229954] text-white z-40 transition-all duration-300 ${
+        className={`fixed bottom-6 left-6 h-16 w-16 rounded-full shadow-lg bg-gradient-to-r from-[#f1c40f] to-[#27ae60] hover:from-[#e1b800] hover:to-[#229954] text-white z-40 transition-all duration-300 ${
           isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
         size="icon"
       >
-        <Bot className="h-6 w-6" />
+        <Bot className="h-8 w-8" />
       </Button>
 
-      {/* Chat Window */}
+      {/* Chat Window - Fixed positioning and input styling */}
       {isOpen && (
-        <div className="fixed bottom-6 left-6 w-80 h-96 z-50 animate-fade-in">
-          <Card className="h-full shadow-xl border-2">
-            <CardHeader className="bg-gradient-to-r from-[#f1c40f] to-[#27ae60] text-white rounded-t-lg p-4">
+        <div className="fixed bottom-6 left-6 w-80 h-96 z-50 animate-fade-in max-w-[calc(100vw-3rem)] sm:w-80">
+          <Card className="h-full shadow-xl border-2 flex flex-col">
+            <CardHeader className="bg-gradient-to-r from-[#f1c40f] to-[#27ae60] text-white rounded-t-lg p-4 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Bot className="h-5 w-5" />
-                  TB Assistant
+                  TorchBot
                 </CardTitle>
                 <Button
                   variant="ghost"
@@ -118,7 +118,7 @@ const ChatbotButton = () => {
               </div>
             </CardHeader>
 
-            <CardContent className="p-0 h-full flex flex-col">
+            <CardContent className="p-0 flex-1 flex flex-col min-h-0">
               <ScrollArea className="flex-1 p-4">
                 <div className="space-y-3">
                   {messages.map((message) => (
@@ -151,21 +151,22 @@ const ChatbotButton = () => {
                 </div>
               </ScrollArea>
 
-              <div className="p-4 border-t">
-                <div className="flex gap-2">
+              {/* Fixed input bar with proper responsive styling */}
+              <div className="p-3 border-t flex-shrink-0 bg-white">
+                <div className="flex gap-2 items-center">
                   <Input
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Type your message..."
                     disabled={isLoading}
-                    className="flex-1"
+                    className="flex-1 text-sm h-10"
                   />
                   <Button
                     onClick={sendMessage}
                     disabled={!inputMessage.trim() || isLoading}
                     size="icon"
-                    className="bg-[#27ae60] hover:bg-[#229954]"
+                    className="bg-[#27ae60] hover:bg-[#229954] h-10 w-10 flex-shrink-0"
                   >
                     <Send className="h-4 w-4" />
                   </Button>

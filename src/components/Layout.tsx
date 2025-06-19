@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+import ChatbotButton from './ChatbotButton';
 
 interface LayoutProps {
   children: ReactNode;
@@ -25,6 +26,7 @@ const Layout = ({ children }: LayoutProps) => {
       </main>
       <Footer />
       <ScrollToTop />
+      <ChatbotButton />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { ArrowRight, Youtube, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -36,18 +35,25 @@ const TBAcademy = () => {
     "Personal Growth & Career Guidance"
   ];
 
+  const scrollToForm = () => {
+    const element = document.getElementById('contact-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Logo */}
         <div className="text-center mb-16">
           <div className="mb-8">
-            {/* TB Academy Logo - Increased Size */}
-            <div className="w-40 h-40 mx-auto mb-6">
+            {/* TB Academy Logo - Further Increased Size */}
+            <div className="w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 mx-auto mb-8">
               <img 
                 src="/lovable-uploads/3fa5e839-c7b8-46e9-ad44-98a7e425f1cc.png" 
                 alt="TB Academy Logo" 
-                className="w-full h-full object-contain animate-logo-zoom"
+                className="w-full h-full object-contain animate-logo-zoom drop-shadow-lg"
               />
             </div>
           </div>

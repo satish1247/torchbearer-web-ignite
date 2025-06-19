@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const Companies = () => {
   const companies = [
@@ -50,6 +51,33 @@ const Companies = () => {
     }
   ];
 
+  const futureCompanies = [
+    {
+      title: "TB Robotics",
+      icon: "🚀",
+      description: "A robotics-focused division aiming to build intelligent machines, automation bots, and smart surveillance systems.",
+      color: "text-purple-600"
+    },
+    {
+      title: "TB AI Lab",
+      icon: "🧠",
+      description: "An AI-first innovation lab focused on creating personal avatars, assistant tools, and next-gen AI applications for ethical use.",
+      color: "text-indigo-600"
+    },
+    {
+      title: "TB Tech Ventures",
+      icon: "🛰️",
+      description: "A tech incubator to support student-led startups, future technology prototypes, and research-driven innovation.",
+      color: "text-cyan-600"
+    },
+    {
+      title: "TB Insurance",
+      icon: "🛡️",
+      description: "A future insurance company offering protection for companies and individuals affected by AI and robotics — ensuring ethical and safe use of advanced tech.",
+      color: "text-emerald-600"
+    }
+  ];
+
   return (
     <div className="min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,8 +92,8 @@ const Companies = () => {
           </p>
         </div>
 
-        {/* Companies Grid */}
-        <div className="space-y-12">
+        {/* Current Companies Grid */}
+        <div className="space-y-12 mb-20">
           {companies.map((company, index) => (
             <Card 
               key={index} 
@@ -117,8 +145,52 @@ const Companies = () => {
           ))}
         </div>
 
+        {/* Future Companies Section */}
+        <div className="bg-gray-50 rounded-lg p-8 mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2c3e50] mb-4">
+              Future Companies
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Upcoming divisions that will expand our vision to transform the world through 
+              cutting-edge technology and innovation
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {futureCompanies.map((company, index) => (
+              <Card 
+                key={index} 
+                className="relative bg-white/60 border-2 border-dashed border-gray-300 hover:border-gray-400 hover:bg-white/80 transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="absolute top-4 right-4">
+                  <Badge variant="secondary" className="bg-gray-200 text-gray-600 font-semibold">
+                    Coming Soon
+                  </Badge>
+                </div>
+                
+                <CardHeader className="pb-4">
+                  <div className="flex items-center space-x-3 mb-2">
+                    <span className="text-3xl">{company.icon}</span>
+                    <CardTitle className={`text-xl font-bold ${company.color}`}>
+                      {company.title}
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                
+                <CardContent>
+                  <CardDescription className="text-gray-600 leading-relaxed">
+                    {company.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
         {/* Call to Action */}
-        <div className="text-center mt-16 bg-gradient-to-r from-[#27ae60] to-[#3498db] text-white p-12 rounded-lg">
+        <div className="text-center bg-gradient-to-r from-[#27ae60] to-[#3498db] text-white p-12 rounded-lg">
           <h2 className="text-3xl font-bold mb-4">
             Ready to Transform Your Future?
           </h2>

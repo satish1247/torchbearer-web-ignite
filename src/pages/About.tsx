@@ -57,12 +57,12 @@ const About = () => {
             </h2>
             
             <div className="bg-gradient-to-br from-white to-green-50/30 rounded-2xl shadow-xl p-8 md:p-12 max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 {/* Photo Section */}
                 <div className="text-center lg:text-left">
                   <div className="relative inline-block">
                     <img 
-                      src="/lovable-uploads/3783e1b0-b85f-4eff-88e7-7c4e05a83959.png"
+                      src="/lovable-uploads/32b733e8-c488-4e1e-a0d3-9aa6660f05e1.png"
                       alt="Ganisetti Veera Venkata Satyanarayana (Satish)"
                       className="w-80 h-80 object-cover rounded-2xl shadow-2xl mx-auto lg:mx-0 hover:scale-105 transition-transform duration-300"
                     />
@@ -71,7 +71,7 @@ const About = () => {
                     </div>
                   </div>
                   
-                  {/* Company Description */}
+                  {/* Company Description - moved here to fill the space */}
                   <div className="mt-8 p-6 bg-gradient-to-r from-[#27ae60]/10 to-[#3498db]/10 rounded-lg border-l-4 border-[#27ae60]">
                     <p className="text-lg text-gray-700 font-medium italic">
                       "Torch Bearer is a visionary company dedicated to empowering innovation across education, automation, and digital transformation."
